@@ -7,10 +7,9 @@ def appearance(intervals):
     lesson = portion.closed(*intervals['lesson'])
     pupil = get_portions_from_intervals(intervals['pupil'])
     tutor = get_portions_from_intervals(intervals['tutor'])
-    together = lesson & pupil & tutor
-    print(len(together))
+    together_on_lesson = lesson & pupil & tutor
     time = 0
-    for x in together:
+    for x in together_on_lesson:
         time += x.upper - x.lower
     return time
 
