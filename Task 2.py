@@ -1,6 +1,6 @@
 import requests
 
-S = requests.Session()
+session = requests.Session()
 
 alphabet = dict()
 
@@ -12,9 +12,9 @@ def add_to_alphabet(animal: str, dictionary: dict):
         dictionary[animal[0]] += 1
 
 
-URL = "https://ru.wikipedia.org/w/api.php"
+url = "https://ru.wikipedia.org/w/api.php"
 
-PARAMS = {
+params = {
     'action': 'query',
     'format': 'json',
     'list': 'categorymembers',
@@ -24,12 +24,12 @@ PARAMS = {
 
 while True:
     try:
-        R = S.get(url=URL, params=PARAMS)
-        DATA = R.json()
-        for anim in DATA['query']['categorymembers']:
+        response = session.get(url, params=params)
+        data = response.json()
+        for anim in data['query']['categorymembers']:
             add_to_alphabet(anim['title'], alphabet)
-        if 'continue' in DATA and 'cmcontinue' in DATA['continue']:
-            PARAMS['cmcontinue'] = DATA['continue']['cmcontinue']
+        if 'continue' in data and 'cmcontinue' in data['continue']:
+            params['cmcontinue'] = data['continue']['cmcontinue']
         else:
             break
     except requests.exceptions.ConnectionError:
