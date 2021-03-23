@@ -1,0 +1,9 @@
+pip~=21.0.1
+certifi~=2020.12.5
+chardet~=4.0.0
+sortedcontainers~=2.3.0
+urllib3~=1.26.4
+
+idna~=2.10
+setuptools~=54.1.2
+requests~=2.25.1
