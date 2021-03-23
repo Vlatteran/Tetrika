@@ -5,7 +5,6 @@ def task(array):
         return -1
     while True:
         point = (end - start) // 2 + start
-        # print(f'{start}, {point}, {end}')
         if point == start or point == end:
             return -1
         a = array[point]
